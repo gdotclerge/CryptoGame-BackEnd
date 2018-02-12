@@ -5,7 +5,8 @@ Rails.application.routes.draw do
       resources :tickers, only: [:index, :show]
       resources :users, only: [:show, :create, :update, :destroy]
 
-      post '/login', to: 'auth#login'
+      post '/auth', to: 'auth#create'
+      get '/current_user', to: 'auth#show'
     end
   end
 end

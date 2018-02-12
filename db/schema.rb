@@ -27,8 +27,9 @@ ActiveRecord::Schema.define(version: 20180208151654) do
   end
 
   create_table "tickers", force: :cascade do |t|
-    t.string "search_term"
     t.integer "rank"
+    t.string "search_term"
+    t.string "symbol"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

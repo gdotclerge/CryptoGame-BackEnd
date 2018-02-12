@@ -9,7 +9,7 @@ response = RestClient.get(url)
 info = JSON.parse(response)
 
 info.each do |crypto|
-  Ticker.create(search_term: crypto["id"], rank: crypto["rank"])
+  Ticker.create(search_term: crypto["id"], rank: crypto["rank"], symbol: crypto["symbol"])
 end
 
 
