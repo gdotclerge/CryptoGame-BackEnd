@@ -2,10 +2,7 @@ class Api::V1::AuthController < ApplicationController
   before_action :authorize_user!, only: [:show]
 
    def show
-     render json: {
-       id: current_user.id,
-       username: current_user.username
-     }
+     render json: current_user
    end
 
    def create
