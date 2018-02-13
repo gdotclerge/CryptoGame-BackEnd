@@ -10,6 +10,7 @@ gem 'json'
 gem 'pry'
 gem 'faker'
 gem 'jwt'
+gem 'active_model_serializers'
 
 
 

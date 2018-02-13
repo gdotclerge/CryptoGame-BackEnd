@@ -15,5 +15,7 @@ end
 
 10.times do
   pokemon = Faker::Pokemon.unique.name
-  User.create(username:pokemon, password: pokemon)
+  user = User.create(username: pokemon, password: pokemon)
+  user.portfolios.build(purchase_amount: 1, purchase_price: 8563.92, ticker_id: 1)
+  user.save
 end
