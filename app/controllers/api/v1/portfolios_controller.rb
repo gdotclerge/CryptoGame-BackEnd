@@ -9,6 +9,8 @@ class Api::V1::PortfoliosController < ApplicationController
     @portfolio = Portfolio.new(portfolio_params)
     @user = User.find_by(id: portfolio_params[:user_id])
     if @portfolio.save
+      purchaseCost = (@portfolio.purchase_amount * @portfolio.purchase_price)
+      @user.update_attribute(:unspent_money, @user.unspent_money - purchaseCost)
       render json: @user
     else
       render json: {errors: @portfolio.errors.full_messages}, status: 422
