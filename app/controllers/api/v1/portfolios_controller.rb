@@ -7,15 +7,16 @@ class Api::V1::PortfoliosController < ApplicationController
 
   def create
     @portfolio = Portfolio.new(portfolio_params)
+    @user = User.find_by(id: portfolio_params[:user_id])
     if @portfolio.save
-      render json: @portfolio
+      render json: @user
     else
       render json: {errors: @portfolio.errors.full_messages}, status: 422
     end
   end
 
   def update
-    @portfolio = Portfolio.find(params[:id])
+    @portfolio = Portfolio.find(portfolio_params[:id])
     @portfolio.update(portfolio_params)
     if @portfolio.save
       render json: @portfolio
@@ -33,7 +34,7 @@ class Api::V1::PortfoliosController < ApplicationController
   private
 
   def portfolio_params
-    params.require(:portfolio).permit(
+    params.permit(
       :user_id,
       :ticker_id,
       :purchase_amount,
