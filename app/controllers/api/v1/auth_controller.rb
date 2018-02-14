@@ -13,7 +13,7 @@ class Api::V1::AuthController < ApplicationController
        # if they do, render back a json response of the user info
        # issue token
        created_jwt = issue_token({id: user.id})
-       render json: {username: user.username,jwt: created_jwt}
+       render json: {user: user, jwt: created_jwt}
      else
        # otherwise, render back some error response
        render json: {
@@ -27,7 +27,7 @@ class Api::V1::AuthController < ApplicationController
      @user = User.new(user_params)
      if @user.save
        created_jwt = issue_token({id: @user.id})
-       render json: {username: @user.username,jwt: created_jwt}
+       render json: {user: @user, jwt: created_jwt}
      else
        render json: {errors: @user.errors.full_messages}, status: 422
      end
