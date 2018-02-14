@@ -29,12 +29,15 @@ class Api::V1::PortfoliosController < ApplicationController
 
   def update
     @portfolio = Portfolio.find(portfolio_params[:id])
+    @user = User.find_by(id: portfolio_params[:user_id])
     @portfolio.update(portfolio_params)
-    if @portfolio.save
-      render json: @portfolio
-    else
-      render json: {errors: @portfolio.errors.full_messages}, status: 422
+    netToUser = (portfolio_params[:purchase_amount].to_f * portfolio_params[:purchase_price].to_f)
+    @portfolio.update_attribute(:purchase_amount, @portfolio.purchase_amount - portfolio_params[:purchase_amount].to_f)
+    @user.update_attribute(:unspent_money, @user.unspent_money + netToUser)
+    if @portfolio.purchase_amount = 0
+      @portfolio.destroy
     end
+    render json: @user
   end
 
   def destroy
@@ -47,6 +50,7 @@ class Api::V1::PortfoliosController < ApplicationController
 
   def portfolio_params
     params.require(:portfolio).permit(
+      :id,
       :user_id,
       :ticker_id,
       :purchase_amount,
