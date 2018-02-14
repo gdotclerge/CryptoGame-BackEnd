@@ -30,6 +30,7 @@ ActiveRecord::Schema.define(version: 20180208151654) do
     t.integer "rank"
     t.string "search_term"
     t.string "symbol"
+    t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

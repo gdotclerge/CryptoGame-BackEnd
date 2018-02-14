@@ -4,6 +4,7 @@ class CreateTickers < ActiveRecord::Migration[5.1]
       t.integer :rank
       t.string :search_term
       t.string :symbol
+      t.string :name
 
       t.timestamps
     end
