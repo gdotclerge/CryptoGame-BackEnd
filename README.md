@@ -15,6 +15,6 @@ Ruby on Rails 5.1.4
 PostGres
 
 ## Authors
-Garry Clerge
+Garry Clerge and Truman Lahr
 
 Deployed project coming soon!
