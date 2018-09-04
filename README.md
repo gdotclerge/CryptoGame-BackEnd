@@ -1,24 +1,20 @@
-# README
+# The CryptoGame (BackEnd)
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+An take on the stock market game but focused on cryptocurrency.
 
-Things you may want to cover:
+## Setup
 
-* Ruby version
+* Clone this repository and cd into the frontend.
+* Run `bundle install` to install your gems.
+* Once gem installation is complete run `rake db:create && rake db:migrate && rake db:seed`.
+* Run `rails s -p 3001` and the backend will be running on localhost:3001.
 
-* System dependencies
 
-* Configuration
+## Built With
+Ruby on Rails 5.1.4
+PostGres
 
-* Database creation
+## Authors
+Garry Clerge
 
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+Deployed project coming soon!
